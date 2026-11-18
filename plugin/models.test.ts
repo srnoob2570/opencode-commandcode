@@ -78,10 +78,10 @@ describe("toModelRecord", () => {
     ]);
   });
 
-  test("sin esfuerzos no hay variantes", () => {
+  test("sin esfuerzos las variantes van vacías, no ausentes", () => {
     expect(
       toModelRecord({ ...base, reasoningOptions: [] }).variants,
-    ).toBeUndefined();
+    ).toEqual([]);
   });
 
   test("la fecha va en milisegundos", () => {
@@ -90,10 +90,12 @@ describe("toModelRecord", () => {
     });
   });
 
-  test("una fecha inválida omite el bloque time", () => {
-    expect(
-      toModelRecord({ ...base, releaseDate: "no-es-fecha" }).time,
-    ).toBeUndefined();
-    expect(toModelRecord({ ...base, releaseDate: undefined }).time).toBeUndefined();
+  test("una fecha inválida cae a 0, no omite el bloque time", () => {
+    expect(toModelRecord({ ...base, releaseDate: "no-es-fecha" }).time).toEqual({
+      released: 0,
+    });
+    expect(toModelRecord({ ...base, releaseDate: undefined }).time).toEqual({
+      released: 0,
+    });
   });
 });

@@ -4,6 +4,14 @@ Todas las versiones notables de este proyecto se documentan aquí. El formato
 sigue [Keep a Changelog](https://keepachangelog.com/es/1.1.0/) y el versionado
 [SemVer](https://semver.org/lang/es/).
 
+## [0.1.1] - 2026-11-18
+
+### Corregido
+
+- Cada registro incluye siempre `time.released` (0 cuando la fecha no se
+  conoce) y `variants` (array vacío cuando no hay esfuerzos). OpenCode fallaba
+  al ordenar y al codificar el catálogo por los modelos sin fecha.
+
 ## [0.1.0] - 2026-11-18
 
 ### Añadido

@@ -34,8 +34,9 @@ export interface ModelRecord {
   status: string;
   enabled: boolean;
   limit: { context: number; output: number };
-  time?: { released: number };
-  variants?: Array<{ id: string; settings: Record<string, unknown> }>;
+  // required: the host encodes the model response with this key present
+  time: { released: number };
+  variants: Array<{ id: string; settings: Record<string, unknown> }>;
 }
 
 function costEntries(m: CatalogModel): ModelRecord["cost"] {
@@ -79,16 +80,16 @@ export function toModelRecord(m: CatalogModel): ModelRecord {
     status: "active",
     enabled: true,
     limit: { context: m.context, output: m.maxOutput },
-  };
-  // a malformed date must never poison the record: omit the whole `time`
-  // block rather than emit NaN into the host schema
-  if (Number.isFinite(released)) record.time = { released };
-  // effort variants: [{id, settings:{reasoningEffort}}] — Command Code accepts
-  // its documented effort strings verbatim (including off/xhigh).
-  if (m.reasoningOptions.length > 0)
-    record.variants = m.reasoningOptions.map((effort) => ({
+    // an unknown date is 0, never NaN: the host sorts by this field without
+    // checking that the block exists
+    time: { released: Number.isFinite(released) ? released : 0 },
+    // effort variants: [{id, settings:{reasoningEffort}}] — Command Code accepts
+    // its documented effort strings verbatim (including off/xhigh). Always an
+    // array: the host requires the key even when there is nothing to choose.
+    variants: m.reasoningOptions.map((effort) => ({
       id: effort,
       settings: { reasoningEffort: effort },
-    }));
+    })),
+  };
   return record;
 }

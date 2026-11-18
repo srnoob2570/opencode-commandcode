@@ -1,6 +1,6 @@
 {
   "name": "@srnoob2570/opencode-commandcode",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "opencode 2.x plugin: complete Command Code model catalog with live availability, limits, efforts and pricing",
   "type": "module",
   "license": "MIT",

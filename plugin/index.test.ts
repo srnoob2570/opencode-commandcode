@@ -14,6 +14,8 @@ const record: ModelRecord = {
   status: "active",
   enabled: true,
   limit: { context: 1000, output: 1000 },
+  time: { released: 0 },
+  variants: [],
 };
 
 const originalFetch = globalThis.fetch;
