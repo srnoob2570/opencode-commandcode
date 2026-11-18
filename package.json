@@ -1,0 +1,39 @@
+{
+  "name": "@srnoob2570/opencode-commandcode",
+  "version": "0.1.0",
+  "description": "opencode 2.x plugin: complete Command Code model catalog with live availability, limits, efforts and pricing",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srnoob2570/opencode-commandcode.git"
+  },
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "commandcode",
+    "command-code",
+    "provider"
+  ],
+  "main": "./plugin/index.ts",
+  "exports": {
+    ".": "./plugin/index.ts",
+    "./server": "./plugin/index.ts"
+  },
+  "files": [
+    "plugin/catalog.ts",
+    "plugin/index.ts",
+    "plugin/models.ts",
+    "plugin/snapshot.ts"
+  ],
+  "scripts": {
+    "build:catalog": "bun scripts/build-catalog.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.0",
+    "@types/node": "^24.0.0",
+    "typescript": "5.9.3"
+  }
+}

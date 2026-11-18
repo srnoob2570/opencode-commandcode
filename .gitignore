@@ -1,0 +1,9 @@
+node_modules
+*.log
+/wayfinder/
+/research/
+/.scratch/
+package-lock.json
+**/docs
+**/.omc
+**/.serena
