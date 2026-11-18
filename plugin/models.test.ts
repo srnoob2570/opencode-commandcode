@@ -78,10 +78,18 @@ describe("toModelRecord", () => {
     ]);
   });
 
-  test("sin esfuerzos las variantes van vacías, no ausentes", () => {
+  test("sin esfuerzos declarados igualmente van los cuatro niveles", () => {
     expect(
-      toModelRecord({ ...base, reasoningOptions: [] }).variants,
-    ).toEqual([]);
+      toModelRecord({ ...base, reasoningOptions: [] }).variants.map((v) => v.id),
+    ).toEqual(["off", "low", "high", "max"]);
+  });
+
+  test("un conjunto distinto de la referencia se reemplaza por los cuatro", () => {
+    expect(
+      toModelRecord({ ...base, reasoningOptions: ["low", "medium"] }).variants.map(
+        (v) => v.id,
+      ),
+    ).toEqual(["off", "low", "high", "max"]);
   });
 
   test("la fecha va en milisegundos", () => {

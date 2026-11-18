@@ -9,6 +9,10 @@ export const zeroCost = () => ({
   cache: { read: 0, write: 0 },
 });
 
+/** Every model exposes the same four levels, regardless of what the upstream
+ * reference lists for it. */
+export const EFFORTS = ["off", "low", "high", "max"] as const;
+
 /** A model record accepted by the opencode 2.x catalog (draft.models.set).
  * The authoritative contract is the host's runtime schema: cost is an ARRAY
  * of tiers, release date is epoch MS under `time.released`, and effort
@@ -84,9 +88,9 @@ export function toModelRecord(m: CatalogModel): ModelRecord {
     // checking that the block exists
     time: { released: Number.isFinite(released) ? released : 0 },
     // effort variants: [{id, settings:{reasoningEffort}}] — Command Code accepts
-    // its documented effort strings verbatim (including off/xhigh). Always an
-    // array: the host requires the key even when there is nothing to choose.
-    variants: m.reasoningOptions.map((effort) => ({
+    // its documented effort strings verbatim (including off/xhigh). Always the
+    // same four levels, and always an array: the host requires the key.
+    variants: EFFORTS.map((effort) => ({
       id: effort,
       settings: { reasoningEffort: effort },
     })),

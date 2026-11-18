@@ -28,8 +28,8 @@ No restart is needed after the plugin is registered.
 - **New models appear on day one.** The live registry decides which models
   exist, so anything Command Code serves is selectable.
 - **Complete limits and efforts.** Context and output limits come from the live
-  entry and the snapshot; reasoning efforts become model variants
-  (`off`, `low`, `high`, `max`, and so on).
+  entry and the snapshot; every model exposes the same four reasoning levels:
+  `off`, `low`, `high` and `max`.
 - **Real prices.** Input, output, cache read/write and context tiers are mapped
   to OpenCode's cost model.
 - **Claude on the right route.** Claude models only answer on `/messages`, so

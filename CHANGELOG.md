@@ -4,6 +4,13 @@ Todas las versiones notables de este proyecto se documentan aquí. El formato
 sigue [Keep a Changelog](https://keepachangelog.com/es/1.1.0/) y el versionado
 [SemVer](https://semver.org/lang/es/).
 
+## [0.2.0] - 2026-11-18
+
+### Cambiado
+
+- Todos los modelos exponen las variantes de razonamiento `off`, `low`, `high`
+  y `max`, aunque la referencia del fabricante liste otro conjunto o ninguno.
+
 ## [0.1.1] - 2026-11-18
 
 ### Corregido

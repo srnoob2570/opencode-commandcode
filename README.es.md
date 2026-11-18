@@ -31,8 +31,8 @@ No hace falta reiniciar después de registrar el plugin.
 - **Los modelos nuevos aparecen el primer día.** El registro en vivo decide qué
   modelos existen, así que todo lo que Command Code sirve es seleccionable.
 - **Límites y esfuerzos completos.** El contexto y el límite de salida salen de
-  la entrada live y del snapshot; los esfuerzos de razonamiento se convierten en
-  variantes del modelo (`off`, `low`, `high`, `max`, etc.).
+  la entrada live y del snapshot; todos los modelos exponen los mismos cuatro
+  niveles de razonamiento: `off`, `low`, `high` y `max`.
 - **Precios reales.** Entrada, salida, lectura/escritura de caché y tiers por
   contexto se mapean al modelo de costes de OpenCode.
 - **Claude por la ruta correcta.** Los modelos Claude solo responden en
